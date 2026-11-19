@@ -1,2 +1,8 @@
-# Automated-Invoice-Processing-Validation-System
-Python app that extracts data from PDF invoices (invoice number, date, vendor, items, tax, total) and validates it for missing or incorrect values. Built with pdfplumber and Streamlit.
+# Automated Invoice Processing & Validation System
+
+A Python web application that reads PDF invoices, extracts key details
+(invoice number, date, vendor, line items, tax, total), and checks them
+for missing fields, calculation errors, duplicates, and invalid dates.
+Results are shown in a web dashboard and can be downloaded as CSV.
+
+**Built with:** Python, pdfplumber, Streamlit, pandas
