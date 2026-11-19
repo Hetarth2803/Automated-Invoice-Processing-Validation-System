@@ -36,7 +36,12 @@ uploaded_files = st.file_uploader("Upload invoice PDFs", type="pdf", accept_mult
 def collect_pdfs():
     """Return a list of (file_name, path_on_disk) for every PDF to process."""
     pdfs = []
-    if use_samples and os.path.isdir("invoices"):
+    if use_samples:
+        # If the sample PDFs are missing (e.g. not uploaded to GitHub), create them now
+        has_pdfs = os.path.isdir("invoices") and any(f.lower().endswith(".pdf") for f in os.listdir("invoices"))
+        if not has_pdfs:
+            import make_sample_invoices
+            make_sample_invoices.main()
         for name in sorted(os.listdir("invoices")):
             if name.lower().endswith(".pdf"):
                 pdfs.append((name, os.path.join("invoices", name)))
